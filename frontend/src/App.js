@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import child components
+// Import child components
 import Header from './components/Header';
 import PasswordDisplay from './components/PasswordDisplay';
 import StrengthIndicator from './components/StrengthIndicator';
@@ -7,40 +7,40 @@ import PasswordSettings from './components/PasswordSettings';
 import GenerateButton from './components/GenerateButton';
 import PasswordHistory from './components/PasswordHistory';
 
-// backend API base url
-const API_URL = 'http://localhost:5000/api';
+// Backend API base url
+const API_URL = 'http://process.env.REACT_APP_API_URL';
 
-// store all component data that can change
+// Store all component data that can change
 export default function PasswordGenerator() {
-  // current generated password
+  // Current generated password
   const [password, setPassword] = useState('');
-  // password length (default: 12)
+  // Password length (default: 12)
   const [length, setLength] = useState(12);
-  // include uppercase letters
+  // Include uppercase letters
   const [uppercase, setUppercase] = useState(true);
-  // include lowercase letters 
+  // Include lowercase letters 
   const [lowercase, setLowercase] = useState(true);
-  // include digits
+  // Include digits
   const [digits, setDigits] = useState(true);
-  // include symbols
+  // Include symbols
   const [symbols, setSymbols] = useState(true);
-  // password strength (weak/medium/strong)
+  // Password strength (weak/medium/strong)
   const [strength, setStrength] = useState('');
-  // array of previously generated passwords
+  // Array of previously generated passwords
   const [history, setHistory] = useState([]);
-  // temporary flag to show "copied" message
+  // Temporary flag to show "copied" message
   const [copied, setCopied] = useState(false);
-  // error message to display
+  // Error message to display
   const [error, setError] = useState('');
-  // loading state during API calls
+  // Loading state during API calls
   const [loading, setLoading] = useState(false);
 
-  // runs once when page first loads and fetches any existing password history from Flask backend
+  // Runs once when page first loads and fetches any existing password history from Flask backend
   useEffect(() => {
     fetchHistory();
   }, []);
 
-  // fetches password history from Flask backend, called on component load and after generating new passwords
+  // Fetches password history from Flask backend, called on component load and after generating new passwords
   const fetchHistory = async () => {
     try {
       // GET request to Flask history endpoint
@@ -65,7 +65,7 @@ export default function PasswordGenerator() {
         headers: {
           'Content-Type': 'application/json',
         },
-        // send user settings as JSON to Flask
+        // Send user settings as JSON to Flask
         body: JSON.stringify({
           length: parseInt(length),
           uppercase,
@@ -77,34 +77,34 @@ export default function PasswordGenerator() {
 
       const data = await response.json();
       
-      // update UI with new password data
+      // Update UI with new password data
       if (response.ok) {
         setPassword(data.password);
         setStrength(data.strength);
         fetchHistory();
       } else {
-        // backend returned an error
+        // Backend returned an error
         setError(data.error || 'Failed to generate password');
       }
     } catch (err) {
-      // network error
+      // Network error
       setError('Could not connect to server');
     } finally {
-      // always hide loading icon
+      // Always hide loading icon
       setLoading(false);
     }
   };
   
   const copyToClipboard = () => {
     if (password) {
-      // copy password to clipboard
+      // Copy password to clipboard
       navigator.clipboard.writeText(password);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
-  // copies a password from history to clipboard
+  // Copies a password from history to clipboard
   const copyHistoryItem = (pwd) => {
     navigator.clipboard.writeText(pwd);
     setCopied(true);
@@ -113,7 +113,7 @@ export default function PasswordGenerator() {
 
   const clearHistory = async () => {
     try {
-      // clears password history
+      // Clears password history
       await fetch(`${API_URL}/history`, { method: 'DELETE' });
       setHistory([]);
     } catch (err) {
@@ -125,13 +125,13 @@ export default function PasswordGenerator() {
     <div className="min-h-screen bg-gray-300 p-6">
       <div className="max-w-4xl mx-auto">
         
-        {/* Header Component */}
+        {/* Header component */}
         <Header />
 
-        {/* Main Card - Password Generation */}
+        {/* Password generation*/}
         <div className="bg-white rounded-lg shadow-md p-8 mb-6">
           
-          {/* Password Display Section */}
+          {/* Password display */}
           <PasswordDisplay
             password={password}
             copied={copied}
