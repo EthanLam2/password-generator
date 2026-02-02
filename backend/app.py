@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 CORS(app, origins=[
-    'https://password-generator-113zpjc8g-ethanlam2s-projects.vercel.app',
+    'https://password-generator-jade-nine-35.vercel.app/',
     'http://localhost:3000'
 ])
 
