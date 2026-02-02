@@ -1,5 +1,4 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
 
 // Header component with title
 export default function Header() {

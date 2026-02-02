@@ -1,12 +1,12 @@
 import React from 'react';
-import { Copy, AlertCircle } from 'lucide-react';
+import { Copy} from 'lucide-react';
 
 // Displays generated password with copy to clipboard function
-// Displays generated password with copy-to-clipboard functionality
 export default function PasswordDisplay({ password, copied, error, onCopy }) {
   return (
     <div className="mb-6">
       <div className="relative">
+        {/* Displays the generated password */}
         <input
           type="text"
           value={password}
@@ -14,7 +14,7 @@ export default function PasswordDisplay({ password, copied, error, onCopy }) {
           placeholder="Generate a password"
           className="w-full pr-16 px-4 py-3 font-mono text-lg rounded border"
         />
-
+        {/* Copy button */}
         <button
           onClick={onCopy}
           disabled={!password}
