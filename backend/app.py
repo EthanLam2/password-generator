@@ -5,7 +5,10 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[
+    'https://password-generator-113zpjc8g-ethanlam2s-projects.vercel.app',
+    'http://localhost:3000'
+])
 
 # in-memory storage for password history (resets when server restarts)
 password_history = []
