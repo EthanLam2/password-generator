@@ -8,7 +8,7 @@ import GenerateButton from './components/GenerateButton';
 import PasswordHistory from './components/PasswordHistory';
 
 // Backend API base url
-const API_URL = 'http://process.env.REACT_APP_API_URL';
+const API_URL = 'https://password-generator-api-xnuu.onrender.com/api';
 
 // Store all component data that can change
 export default function PasswordGenerator() {
