@@ -6,10 +6,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-CORS(app, origins=[
-    'https://password-generator-ethanlam2.vercel.app/',
-    'http://localhost:3000'
-])
+CORS(app, origins=["*"])
 
 # in-memory storage for password history (resets when server restarts)
 password_history = []
