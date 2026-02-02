@@ -3,10 +3,11 @@ from flask_cors import CORS
 import string
 import random
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 CORS(app, origins=[
-    'https://password-generator-jade-nine-35.vercel.app/',
+    'https://password-generator-ethanlam2.vercel.app/',
     'http://localhost:3000'
 ])
 
@@ -137,4 +138,8 @@ if __name__ == "__main__":
     print("GET /api/history Get password history")
     print("DELETE /api/history Clear history")
     print("GET /api/health Health check")
-    app.run(debug=False, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False
+    )
