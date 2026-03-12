@@ -2,7 +2,7 @@
 
 Hosted at https://password-generator-ethanlam2.vercel.app/
 
-This is a personal project project that generates customizable passwords with strength analysis and pasword history tracking.
+This is a personal project that generates customizable passwords with strength analysis and password history tracking.
 
 This project demonstrates a full-stack workflow with seven main components:
 1. Flask Backend (app.py): handles password generation logic, strength calculation, and history management
@@ -15,8 +15,8 @@ This project demonstrates a full-stack workflow with seven main components:
 
 ## Features:
 - Customizable Password Generation:
-  - Length adjustment from 4 to 64 characters using an interactive sldier
-  - Character type seleciton: uppercase, lowercase, digits, and symbols
+  - Length adjustment from 4 to 64 characters using an interactive slider
+  - Character type selection: uppercase, lowercase, digits, and symbols
   - Real-time validation to ensure at least one character type is selected
 - Password Strength Analysis:
   - Evaluates passwords based on length
